@@ -226,7 +226,7 @@ public class RegionPrintoutBuilder implements Callable<TextComponent> {
                 for (int i = 0; i < indent; i++) {
                     namePrefix.append(" ");
                 }
-                namePrefix.append("\u2937"); //⤷
+                namePrefix.append("\u2937");
             }
 
             // Put name

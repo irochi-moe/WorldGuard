@@ -181,16 +181,16 @@ public class RegionProtectionListener extends AbstractListener {
                 if (fire) flags.add(Flags.FIRE_SPREAD);
                 if (lava) flags.add(Flags.LAVA_FIRE);
                 canPlace = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, flags.toArray(new StateFlag[flags.size()])));
-                what = "place fire";
+                what = "\\ubd88\\uc744 \\ub193\\uc744";
 
             } else if (type == Material.FROSTED_ICE) {
                 event.setSilent(true); // gets spammy
                 canPlace = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.BLOCK_PLACE, Flags.FROSTED_ICE_FORM));
-                what = "use frostwalker"; // hidden anyway
+                what = "\\ucc28\\uac00\\uc6b4 \\uc5bc\\uc74c\\uc744 \\uc0ac\\uc6a9\\ud560 \\uc218"; // hidden anyway
             /* Everything else */
             } else {
                 canPlace = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.BLOCK_PLACE));
-                what = "place that block";
+                what = "\\ube14\\ub85d\\uc744 \\uc124\\uce58\\ud560";
             }
 
             if (!canPlace) {
@@ -220,12 +220,12 @@ public class RegionProtectionListener extends AbstractListener {
                 /* TNT */
                 if (event.getCause().find(EntityType.PRIMED_TNT, EntityType.MINECART_TNT) != null) {
                     canBreak = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.BLOCK_BREAK, Flags.TNT));
-                    what = "use dynamite";
+                    what = "\\ud3ed\\ubc1c\\ubb3c\\uc744 \\uc0ac\\uc6a9\\ud560";
 
                 /* Everything else */
                 } else {
                     canBreak = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.BLOCK_BREAK));
-                    what = "break that block";
+                    what = "\\ube14\\ub85d\\uc744 \\ud30c\\uad34\\ud560";
                 }
 
                 if (!canBreak) {
@@ -255,47 +255,47 @@ public class RegionProtectionListener extends AbstractListener {
             /* Saplings, etc. */
             if (Materials.isConsideredBuildingIfUsed(type)) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event));
-                what = "use that";
+                what = "\\uc124\\uce58\\ud560";
 
             /* Inventory */
             } else if (Materials.isInventoryBlock(type)) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.CHEST_ACCESS));
-                what = "open that";
+                what = "\\uc5f4";
 
             /* Inventory for blocks with the possibility to be only use, e.g. lectern */
             } else if (handleAsInventoryUsage(event.getOriginalEvent())) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.CHEST_ACCESS));
-                what = "take that";
+                what = "\\uac00\\uc838\\uac08";
 
             /* Anvils */
             } else if (Materials.isAnvil(type)) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.USE_ANVIL));
-                what = "use that";
+                what = "\\uc0ac\\uc6a9\\ud560";
 
             /* Beds */
             } else if (Materials.isBed(type)) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.INTERACT, Flags.SLEEP));
-                what = "sleep";
+                what = "\\uc7a0\\uc744 \\uc798";
 
             /* Respawn Anchors */
             } else if(type == Material.RESPAWN_ANCHOR) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.INTERACT, Flags.RESPAWN_ANCHORS));
-                what = "use anchors";
+                what = "\\uc815\\ubc15\\uae30\\ub97c \\uc0ac\\uc6a9\\ud560";
 
             /* TNT */
             } else if (type == Material.TNT) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.INTERACT, Flags.TNT));
-                what = "use explosives";
+                what = "\\ud3ed\\ubc1c\\ubb3c\\uc744 \\uc0ac\\uc6a9\\ud560";
 
             /* Legacy USE flag */
             } else if (Materials.isUseFlagApplicable(type)) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.INTERACT, Flags.USE));
-                what = "use that";
+                what = "\\uc0ac\\uc6a9\\ud560";
 
             /* Everything else */
             } else {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.INTERACT));
-                what = "use that";
+                what = "\\uc0ac\\uc6a9\\ud560";
             }
 
             if (!canUse) {
@@ -325,26 +325,26 @@ public class RegionProtectionListener extends AbstractListener {
         /* Vehicles */
         if (Entities.isVehicle(type)) {
             canSpawn = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.PLACE_VEHICLE));
-            what = "place vehicles";
+            what = "\\ud0c8 \\uac83\\uc744 \\ub193\\uc744";
 
         /* Item pickup */
         } else if (event.getEntity() instanceof Item) {
             canSpawn = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.ITEM_DROP));
-            what = "drop items";
+            what = "\\uc544\\uc774\\ud15c\\uc744 \\ubc84\\ub9b4";
 
         /* XP drops */
         } else if (type == EntityType.EXPERIENCE_ORB) {
             canSpawn = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.EXP_DROPS));
-            what = "drop XP";
+            what = "\\uacbd\\ud5d8\\uce58\\ub97c \\ubc84\\ub9b4";
 
         } else if (Entities.isAoECloud(type)) {
             canSpawn = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.POTION_SPLASH));
-            what = "use lingering potions";
+            what = "\\uc794\\ub958\\ud615 \\ud3ec\\uc158\\uc744 \\uc0ac\\uc6a9\\ud560";
 
         /* Everything else */
         } else {
             canSpawn = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event));
-            what = "place things";
+            what = "\\uc124\\uce58\\ud560";
         }
 
         if (!canSpawn) {
@@ -370,17 +370,17 @@ public class RegionProtectionListener extends AbstractListener {
         /* Vehicles */
         if (Entities.isVehicle(type)) {
             canDestroy = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.DESTROY_VEHICLE));
-            what = "break vehicles";
+            what = "\\ud0c8 \\uac83\\uc744 \\ubd80\\uc220";
 
         /* Item pickup */
         } else if (event.getEntity() instanceof Item || event.getEntity() instanceof ExperienceOrb) {
             canDestroy = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.ITEM_PICKUP));
-            what = "pick up items";
+            what = "\\uc544\\uc774\\ud15c\\uc744 \\uc8fc\\uc6b8";
 
         /* Everything else */
         } else {
             canDestroy = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event));
-            what = "break things";
+            what = "\\ud30c\\uad34\\ud560";
         }
 
         if (!canDestroy) {
@@ -408,30 +408,30 @@ public class RegionProtectionListener extends AbstractListener {
         if (Entities.isHostile(entity) || Entities.isAmbient(entity)
                 || Entities.isNPC(entity) || entity instanceof Player) {
             canUse = event.getRelevantFlags().isEmpty() || query.queryState(BukkitAdapter.adapt(target), associable, combine(event)) != State.DENY;
-            what = "use that";
+            what = "\\uc0ac\\uc6a9\\ud560";
         /* Paintings, item frames, etc. */
         } else if (Entities.isConsideredBuildingIfUsed(entity)) {
             if ((type == EntityType.ITEM_FRAME || type == EntityType.GLOW_ITEM_FRAME)
                     && event.getCause().getFirstPlayer() != null
                     && ((ItemFrame) entity).getItem().getType() != Material.AIR) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.ITEM_FRAME_ROTATE));
-                what = "change that";
+                what = "\\ubc14\\uafc0";
             } else if (Entities.isMinecart(type)) {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.CHEST_ACCESS));
-                what = "open that";
+                what = "\\uc5f4";
             } else {
                 canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event));
-                what = "change that";
+                what = "\\ubc14\\uafc0";
             }
         /* Ridden on use */
         } else if (Entities.isRiddenOnUse(entity)) {
             canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.RIDE, Flags.INTERACT));
-            what = "ride that";
+            what = "\\ud0c8";
 
         /* Everything else */
         } else {
             canUse = query.testBuild(BukkitAdapter.adapt(target), associable, combine(event, Flags.INTERACT));
-            what = "use that";
+            what = "\\uc0ac\\uc6a9\\ud560";
         }
 
         if (!canUse) {
@@ -466,12 +466,12 @@ public class RegionProtectionListener extends AbstractListener {
         if (Entities.isHostile(event.getEntity()) || Entities.isAmbient(event.getEntity())
                 || Entities.isVehicle(event.getEntity().getType())) {
             canDamage = event.getRelevantFlags().isEmpty() || query.queryState(target, associable, combine(event)) != State.DENY;
-            what = "hit that";
+            what = "\\ub54c\\ub9b4";
 
         /* Paintings, item frames, etc. */
         } else if (Entities.isConsideredBuildingIfUsed(event.getEntity())) {
             canDamage = query.testBuild(target, associable, combine(event));
-            what = "change that";
+            what = "\\ubc14\\uafc0";
 
         /* PVP */
         } else if (pvp) {
@@ -492,22 +492,22 @@ public class RegionProtectionListener extends AbstractListener {
                 canDamage = true;
             }
 
-            what = "PvP";
+            what = "PVP \\ud560";
 
         /* Player damage not caused  by another player */
         } else if (event.getEntity() instanceof Player) {
             canDamage = event.getRelevantFlags().isEmpty() || query.queryState(target, associable, combine(event)) != State.DENY;
-            what = "damage that";
+            what = "\\ub370\\ubbf8\\uc9c0\\ub97c \\uc785\\ud790";
 
         /* damage to non-hostile mobs (e.g. animals) */
         } else if (Entities.isNonHostile(event.getEntity())) {
             canDamage = query.testBuild(target, associable, combine(event, Flags.DAMAGE_ANIMALS));
-            what = "harm that";
+            what = "\\uacf5\\uaca9\\ud560";
 
         /* Everything else */
         } else {
             canDamage = query.testBuild(target, associable, combine(event, Flags.INTERACT));
-            what = "hit that";
+            what = "\\ub54c\\ub9b4";
         }
 
         if (!canDamage) {

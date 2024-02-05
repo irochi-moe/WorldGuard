@@ -220,7 +220,7 @@ public final class Flags {
     public static final StringFlag DENY_MESSAGE = register(new StringFlag("deny-message",
             LegacyComponentSerializer.INSTANCE.serialize(TextComponent.of("").append(TextComponent.of("Hey!",
                     TextColor.RED, Sets.newHashSet(TextDecoration.BOLD)))
-                    .append(TextComponent.of(" Sorry, but you can't %what% here.", TextColor.GRAY)))));
+                    .append(TextComponent.of(" \\uc774\\uacf3\\uc5d0\\uc11c\\ub294 %what% \\uc218 \\uc5c6\\uc2b5\\ub2c8\\ub2e4.", TextColor.GRAY)))));
     /**
      * @deprecated The type of this flag will change from a StringFlag to a ComponentFlag to support JSON text
      *              in a future release. If you depend on the type of this flag, take proper precaution for future breakage.
@@ -229,7 +229,7 @@ public final class Flags {
     public static final StringFlag ENTRY_DENY_MESSAGE = register(new StringFlag("entry-deny-message",
             LegacyComponentSerializer.INSTANCE.serialize(TextComponent.of("").append(TextComponent.of("Hey!",
                     TextColor.RED, Sets.newHashSet(TextDecoration.BOLD)))
-                    .append(TextComponent.of(" You are not permitted to enter this area.", TextColor.GRAY)))));
+                    .append(TextComponent.of(" \\uc774 \\uad6c\\uc5ed\\uc5d0 \\ub4e4\\uc5b4\\uac08 \\uc218 \\uc5c6\\uc2b5\\ub2c8\\ub2e4.", TextColor.GRAY)))));
     /**
      * @deprecated The type of this flag will change from a StringFlag to a ComponentFlag to support JSON text
      *              in a future release. If you depend on the type of this flag, take proper precaution for future breakage.
@@ -238,7 +238,7 @@ public final class Flags {
     public static final StringFlag EXIT_DENY_MESSAGE = register(new StringFlag("exit-deny-message",
             LegacyComponentSerializer.INSTANCE.serialize(TextComponent.of("").append(TextComponent.of("Hey!",
                     TextColor.RED, Sets.newHashSet(TextDecoration.BOLD)))
-                    .append(TextComponent.of(" You are not permitted to leave this area.", TextColor.GRAY)))));
+                    .append(TextComponent.of(" \\uc774 \\uad6c\\uc5ed\\uc5d0\\uc11c \\ub098\\uac08 \\uc218 \\uc5c6\\uc2b5\\ub2c8\\ub2e4.", TextColor.GRAY)))));
 
     private Flags() {
     }
